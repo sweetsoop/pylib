@@ -24,5 +24,5 @@ class Logger:
     def write(self):
         file = open(datetime.now().strftime('%Y%m%d') + '.log', 'w')
         for message in self.messages:
-            file.write(message + '\n')
+            file.write(str(message) + '\n')
         file.close()
