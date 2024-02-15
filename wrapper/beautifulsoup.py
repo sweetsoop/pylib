@@ -18,6 +18,10 @@ class BS:
         return int(re.sub(r'[^0-9]', '', BS.text(source)))
     
     @staticmethod
+    def removeNumber(source:str|Tag) -> str:
+        return BS.clean_text(re.sub(r'\d+', '', BS.text(source)))
+    
+    @staticmethod
     def clean_text(source:str|Tag) -> str:
         source = BS.text(source)
         return source.strip().replace('  ', ' ').removeprefix('[').removesuffix(']')
@@ -29,5 +33,8 @@ class BS:
             elements = source.split(separate)
         for x in range(len(elements)):
             elements[x] = BS.clean_text(elements[x])
-        return elements
+        return BS.arrange_list(elements)
         
+    @staticmethod
+    def arrange_list(source:list) -> list:
+        return list(filter(None, source))

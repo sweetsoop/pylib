@@ -7,7 +7,7 @@ class ConfigLoader:
         self.configParser.read(path)
         self.defaultGroup = defaultGroup
 
-    def get(self, key:str, group:str|None = None) -> str:
-        targetGroup = self.configParser[self.defaultGroup] if group is None else self.configParser[group]
-        return targetGroup[key]
+    def get(self, group:str, key:str) -> str:
+        group = group if len(group) > 0 else 'common'
+        return self.configParser[group][key]
     
