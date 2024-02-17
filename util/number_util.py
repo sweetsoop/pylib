@@ -1,0 +1,2 @@
+class NumberUtil:
+    pass
