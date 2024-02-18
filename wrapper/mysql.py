@@ -15,6 +15,16 @@ class MySQL:
             if cur is not None:
                 cur.close()
         return result
+    
+    def find_all(self, query:str, args:object = None) -> list:
+        try:
+            cur = self.conn.cursor()
+            cur.execute(query, args)
+            results = cur.fetchall()
+        finally:
+            if cur is not None:
+                cur.close()
+        return results
 
     def execute(self, query:str, args:object) -> int:
         lastId = 0

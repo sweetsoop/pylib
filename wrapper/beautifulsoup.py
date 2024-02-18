@@ -1,6 +1,7 @@
 import re
 import requests
 from bs4 import BeautifulSoup, Tag
+from datetime import datetime
 
 
 class BS:
@@ -15,8 +16,16 @@ class BS:
     
     @staticmethod
     def int(source:str|Tag) -> int:
-        return int(re.sub(r'[^0-9]', '', BS.text(source)))
+        source = BS.clean_text(source)
+        if (source == ''):
+            return 0
+        return int(re.sub(r'[^0-9]', '', BS.clean_text(source)))
     
+    @staticmethod
+    def datetime(source:str|Tag, pattern:str) -> datetime:
+        source = BS.clean_text(source)
+        return datetime.strptime(source, pattern)
+        
     @staticmethod
     def remove_number(source:str|Tag) -> str:
         return BS.clean_text(re.sub(r'\d+', '', BS.text(source)))
