@@ -1,5 +1,5 @@
 from math import asin, cos, sin, sqrt
-from haversine import haversine, Unit
+#from haversine import haversine, Unit
 
 class LatLon:
     def __init__(self, lat:float, lon:float) -> None:
@@ -7,9 +7,11 @@ class LatLon:
         self.lon = lon
 
 class GeoUtil:
+    '''
     @staticmethod
     def distance_haversine(fromLatLon:LatLon, toLatLon:LatLon) -> float:
         return haversine((fromLatLon.lat, fromLatLon.lon), (toLatLon.lat, toLatLon.lon), unit = Unit.METERS)
+    '''
     
     @staticmethod
     def distance(fromLatLon:LatLon, toLatLon:LatLon) -> float:
