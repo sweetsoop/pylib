@@ -1,6 +1,8 @@
 import pymysql
 import pymysql.cursors
 
+from pylib.service.log_service import Logger
+
 
 class MySQL:
     def __init__(self, host:str, port:int, user:str, password:str, db:str) -> None:
@@ -34,7 +36,7 @@ class MySQL:
             self.conn.commit()
             lastId = cur.lastrowid
         except Exception as e:
-            pass
+            Logger.to().add(e)
         finally:
             if cur is not None:
                 cur.close()

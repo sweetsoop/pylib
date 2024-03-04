@@ -41,6 +41,7 @@ class BS:
     @staticmethod
     def clean_text(source:str|Tag) -> str:
         source = BS.text(source)
+        source = re.sub(r'[^a-zA-Z0-9가-힣().:\s]', '', source)
         return source.strip().replace('  ', ' ').removeprefix('[').removesuffix(']')
     
     @staticmethod
