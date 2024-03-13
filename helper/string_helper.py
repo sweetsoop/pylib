@@ -8,5 +8,9 @@ class StringHelper:
         return re.match(r'\d+(?=㎡)')
     
     @staticmethod
-    def toJson(source:any) -> str:
+    def to_json(source:any) -> str:
         return json.dumps(source, ensure_ascii=False)
+    
+    @staticmethod
+    def from_json(source:str) -> any:
+        return json.loads(source)
