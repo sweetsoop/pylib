@@ -1,8 +1,8 @@
-import json
 import re
+import json
+from datetime import datetime
 
-
-class StringHelper:
+class StrHelper:
     @staticmethod
     def find_number(source:str, suffix:str) -> float:
         return re.match(r'\d+(?=㎡)')
@@ -14,3 +14,7 @@ class StringHelper:
     @staticmethod
     def from_json(source:str) -> any:
         return json.loads(source)
+    
+    @staticmethod
+    def datetime(source:datetime) -> str | None:
+        return source.strftime('%Y-%m-%d') if source is not None else None
