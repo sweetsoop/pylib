@@ -2,6 +2,7 @@ import re
 import json
 from datetime import datetime
 
+
 class StrHelper:
     @staticmethod
     def find_number(source:str, suffix:str) -> float:
@@ -10,6 +11,20 @@ class StrHelper:
     @staticmethod
     def to_json(source:any) -> str:
         return json.dumps(source, ensure_ascii=False)
+    
+    @staticmethod
+    def entity_to_json(source:any) -> str:
+        from pylib.base.entity import Entity
+        if isinstance(source, list):
+            elements = []
+            for element in source:
+                if isinstance(element, Entity):
+                    elements.append(element.to_dict())
+            return json.dumps(elements, ensure_ascii=False)
+        elif isinstance(source, Entity):
+            return json.dumps(source.to_dict(), ensure_ascii=False)
+        return None
+        
     
     @staticmethod
     def from_json(source:str) -> any:
