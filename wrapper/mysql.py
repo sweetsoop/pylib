@@ -36,6 +36,7 @@ class MySQL:
             self.conn.commit()
             lastId = cur.lastrowid
         except Exception as e:
+            print(e)
             Logger.to().add(e)
         finally:
             if cur is not None:
