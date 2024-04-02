@@ -53,3 +53,18 @@ class MySQL:
         finally:
             if cur is not None:
                 cur.close()
+
+    def update(self, query:str, args:object = None) -> int:
+        affectedRows = 0
+        try:
+            cur = self.conn.cursor()
+            cur.execute(query, args)
+            self.conn.commit()
+            affectedRows = cur.rowcount
+        except Exception as e:
+            print(e)
+            Logger.to().add(e)
+        finally:
+            if cur is not None:
+                cur.close()
+        return affectedRows
