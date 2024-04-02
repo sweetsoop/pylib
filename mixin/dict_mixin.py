@@ -1,4 +1,5 @@
 from datetime import datetime
+from enum import Enum
 from pylib.helper.string_helper import StrHelper
 
 
@@ -13,5 +14,7 @@ class DictMixin:
     def _convert(self, source:any) -> any:
         if isinstance(source, datetime):
             return StrHelper.datetime(source)
+        elif isinstance(source, Enum):
+            return source.value
         else:
             return source
