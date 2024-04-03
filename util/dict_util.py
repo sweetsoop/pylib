@@ -3,8 +3,8 @@ import re
 
 class DictUtil:
     @staticmethod
-    def get(key:str, source:dict) -> any:
-        return source[key] if source[key] is not None else None
+    def get(key:str, source:dict, fallback:any = None) -> any:
+        return source[key] if source[key] is not None else fallback
 
     @staticmethod
     def clean(source:dict) -> dict:

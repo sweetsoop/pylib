@@ -21,3 +21,9 @@ class JsonUtil:
             return source.to_dict()
         else:
             return source
+        
+    @staticmethod
+    def from_json(source:str, fallback:str = '[]') -> any:
+        if source is None:
+            source = fallback
+        return json.loads(source)

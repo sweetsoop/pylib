@@ -58,6 +58,10 @@ class BS:
         return BS.arrange_list(elements)
     
     @staticmethod
+    def raw_tests(source:Tag, separate:str) -> list:
+        return source.text.split(separate)
+    
+    @staticmethod
     def numbers(source:str|Tag, separate:str|None = None) -> list:
         source = BS.text(source)
         if separate is not None:
